@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ILearn</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ILearn", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Teachers", "Teachers", "User")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                    }
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Applications", "myApplications", "Home")</li>
+                    }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Profile", "MyProfile", "User")</li>
+                    }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Users", "ListOfUsers", "User")</li>
+                    }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Schedule", "Index", "Calendar")</li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+
+        <div style="bottom:0;position: fixed; width:100%;">
+            <footer>
+                <div class="navbar navbar-inverse navbar-fixed-bottom">
+                    <div class="container">
+                        <div class="navbar-fixed-bottom">
+                            <p style="color: steelblue;">&nbsp;&nbsp; &copy; @DateTime.Now.Year - ILearn</palign="right">
+                                
+</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
